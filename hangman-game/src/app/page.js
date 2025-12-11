@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
+
 // Isometric Cube Component
 const IsometricCube = ({ color, size = 16, letter, x, y, z = 0 }) => {
   const baseSize = size;
@@ -89,9 +91,10 @@ const IsoBlock = ({ color, size = 16, letter, x, y }) => {
 };
 
 export default function Home() {
+  const router = useRouter();
+
   const handlePlayAsGuest = () => {
-    // TODO: Navigate to game page for guest
-    console.log("Play as guest");
+    router.push('/game');
   };
 
   const handleSignIn = () => {
