@@ -56,6 +56,7 @@ Firebase handles authentication securely, reducing backend complexity while keep
 ### Backend
 - **Node.js + Express** ✅  
   - REST API
+  -callbacks
 - **MySQL**
   - Store:
     - Custom word banks
@@ -86,5 +87,47 @@ Firebase handles authentication securely, reducing backend complexity while keep
 
 ---
 
-## 📁 Suggested Project Structure
 
+
+---
+
+## 🧩 Core Game Logic Overview
+
+- Word selection (default or user-defined)
+- Letter validation
+- Guess tracking
+- Timer countdown
+- Win/Loss detection
+- Difficulty-based rule adjustments
+
+---
+
+## 📈 Planned Enhancements
+
+- Smarter difficulty scaling
+- Category-based word banks
+- Daily challenge mode
+- Sound effects & visual feedback
+- Progressive Web App (PWA) support
+- Mobile version (Flutter)
+
+---
+
+## 🎯 Development Focus
+
+- Clean and maintainable code
+- Performance-first approach
+- Secure authentication
+- Highly interactive user experience
+
+---
+
+## 📜 License
+
+MIT License — free to use and modify.
+
+---
+
+## 👤 Author
+
+Built with ❤️ by **Rukundo Wilson**
