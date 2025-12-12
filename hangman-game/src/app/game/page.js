@@ -401,9 +401,31 @@ export default function GamePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
+      {/* Animated Background Objects */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Floating Circles */}
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-green-200/30 blur-xl animate-float-slow"></div>
+        <div className="absolute top-40 right-20 w-40 h-40 rounded-full bg-green-300/25 blur-2xl animate-float-medium"></div>
+        <div className="absolute bottom-32 left-1/4 w-24 h-24 rounded-full bg-green-400/20 blur-xl animate-float-fast"></div>
+        <div className="absolute top-1/3 right-1/3 w-36 h-36 rounded-full bg-green-200/25 blur-2xl animate-float-slow"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-28 rounded-full bg-green-300/30 blur-xl animate-float-medium"></div>
+        
+        {/* Geometric Shapes */}
+        <div className="absolute top-1/4 left-1/3 w-20 h-20 bg-green-300/20 rotate-45 blur-sm animate-spin-slow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-16 h-16 bg-green-400/25 rounded-lg rotate-12 blur-sm animate-float-medium"></div>
+        <div className="absolute top-2/3 left-1/2 w-24 h-24 bg-green-200/20 rounded-full blur-lg animate-float-slow"></div>
+        <div className="absolute top-1/2 right-1/5 w-20 h-20 bg-green-300/25 rotate-45 blur-md animate-spin-slow"></div>
+        
+        {/* Small floating dots */}
+        <div className="absolute top-16 right-1/3 w-3 h-3 rounded-full bg-green-400/40 animate-float-fast"></div>
+        <div className="absolute bottom-40 left-1/5 w-2 h-2 rounded-full bg-green-500/35 animate-float-medium"></div>
+        <div className="absolute top-3/4 right-1/2 w-4 h-4 rounded-full bg-green-300/40 animate-float-slow"></div>
+        <div className="absolute bottom-1/3 left-2/3 w-3 h-3 rounded-full bg-green-400/35 animate-float-fast"></div>
+      </div>
+
       {/* Header */}
-      <div className="bg-white">
+      <div className="bg-white relative z-10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <button
             onClick={() => router.push('/')}
@@ -425,7 +447,7 @@ export default function GamePage() {
         </div>
       </div>
 
-      <main className="mx-auto max-w-6xl px-6 py-8">
+      <main className="mx-auto max-w-6xl px-6 py-8 relative z-10">
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Left Side - Hangman Visual & Word */}
           <div className="space-y-6">
