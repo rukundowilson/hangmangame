@@ -74,3 +74,4 @@ function MyComponent() {
   // user contains { uid, email, displayName } when logged in
 }
 ```
+

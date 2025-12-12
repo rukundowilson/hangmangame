@@ -64,3 +64,4 @@ Make sure you've created the database tables. The schema SQL file should be in t
 - All database operations are now handled by the backend
 - CORS is enabled to allow frontend requests
 
+

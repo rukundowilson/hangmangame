@@ -68,3 +68,4 @@ CREATE TABLE IF NOT EXISTS custom_word_bank_words (
   INDEX idx_word (word)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+

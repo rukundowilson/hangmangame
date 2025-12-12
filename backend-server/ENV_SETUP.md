@@ -32,3 +32,4 @@ If you see connection errors, check:
 - Database credentials are correct
 - Database exists (create it with: `CREATE DATABASE hangman_game;`)
 
+
