@@ -1,23 +1,26 @@
 import express from 'express';
 import cors from 'cors';
-import db from './src/config/db.js';
-import fs from 'fs';
-import path from 'path';
 import dotenv from 'dotenv';
+
+// Load environment variables first
+// dotenv will look for .env in the current working directory
 dotenv.config();
 
+// Import db after environment variables are loaded
+
+// Import db after environment variables are loaded
+import db from './src/config/db.js';
+
 // Import routes
-
-
-// Import middleware
-
+import userRoutes from './src/routes/userRoutes.js';
+import gameRoutes from './src/routes/gameRoutes.js';
+import wordBankRoutes from './src/routes/wordBankRoutes.js';
 
 const app = express();
 const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors());
-app.use(corsHandler);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -31,7 +34,9 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
-
+app.use('/api/users', userRoutes);
+app.use('/api/games', gameRoutes);
+app.use('/api/wordbanks', wordBankRoutes);
 
 // Database health check
 db.query('SELECT 1 + 1 AS result', (err, results) => {
@@ -42,13 +47,25 @@ db.query('SELECT 1 + 1 AS result', (err, results) => {
   }
 });
 
-// Error handling middleware (must be last)
-app.use(notFound);
-app.use(errorHandler);
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Route not found'
+  });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    error: 'Internal server error',
+    message: err.message
+  });
+});
 
 // Start server
 app.listen(port, () => {
   console.log(`🚀 Server started on port ${port}`);
-  console.log(`📊 Stock Management API available at http://localhost:${port}/api`);
+  console.log(`📊 Hangman Game API available at http://localhost:${port}/api`);
   console.log(`🏥 Health check available at http://localhost:${port}/health`);
 });

@@ -1,6 +1,9 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { useEffect } from 'react';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 
 // Isometric Cube Component
 const IsometricCube = ({ color, size = 16, letter, x, y, z = 0 }) => {
@@ -92,15 +95,22 @@ const IsoBlock = ({ color, size = 16, letter, x, y }) => {
 
 export default function Home() {
   const router = useRouter();
+  const { user, logout, loading } = useAuth();
 
-  const handlePlayAsGuest = () => {
+  const handlePlayGame = () => {
     router.push('/game');
   };
 
-  const handleSignIn = () => {
-    // TODO: Navigate to sign in page
-    console.log("Sign in");
-  };
+  // Show loading state while checking auth
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <div className="mb-4 text-2xl font-bold" style={{ color: '#1B5E20' }}>Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -113,15 +123,14 @@ export default function Home() {
         
         {/* Nav Links - Right side on green background */}
         <div className="flex items-center gap-6 pr-8 text-white">
-          <a href="#" className="text-sm font-semibold hover:underline">HOME</a>
-          <a href="#" className="text-sm font-semibold hover:underline">CATALOG</a>
-          <a href="#" className="text-sm font-semibold hover:underline">CONTACT</a>
-          <a href="#" className="text-sm font-semibold hover:underline">SIGN UP</a>
-          <div className="ml-4 flex flex-col gap-1">
-            <div className="h-0.5 w-6 bg-white"></div>
-            <div className="h-0.5 w-6 bg-white"></div>
-            <div className="h-0.5 w-6 bg-white"></div>
-          </div>
+          {user ? (
+            <UserProfileDropdown variant="dark" />
+          ) : (
+            <>
+              <a href="/login" className="text-sm font-semibold hover:underline">LOGIN</a>
+              <a href="/login" className="text-sm font-semibold hover:underline">SIGN UP</a>
+            </>
+          )}
         </div>
       </nav>
 
@@ -142,13 +151,20 @@ export default function Home() {
               with multiple difficulty levels and track your progress.
             </p>
             
+            {/* Welcome message for logged in users */}
+            {user && (
+              <p className="mb-4 text-lg font-semibold" style={{ color: '#1B5E20' }}>
+                Welcome back, {user.displayName || user.email?.split('@')[0] || 'Player'}! 🎮
+              </p>
+            )}
+            
             {/* Action Button */}
             <button
-              onClick={handlePlayAsGuest}
+              onClick={user ? handlePlayGame : () => router.push('/login')}
               className="rounded-lg px-8 py-3 text-base font-semibold text-white transition-colors hover:opacity-90"
               style={{ backgroundColor: '#1B5E20' }}
             >
-              Play Now
+              {user ? 'Play Game' : 'Play Now'}
             </button>
           </div>
         </div>
