@@ -118,7 +118,7 @@ export default function Home() {
       <nav className="absolute top-0 z-20 flex w-full items-center justify-between px-8 py-6">
         {/* Logo - Left side on white */}
         <div className="flex h-12 w-12 items-center justify-center rounded-full text-xs font-bold text-white" style={{ backgroundColor: '#1B5E20' }}>
-          LOGO
+          HM
         </div>
         
         {/* Nav Links - Right side on green background */}
