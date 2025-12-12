@@ -52,7 +52,7 @@ export default function UserProfileDropdown({ variant = 'light' }) {
   const displayName = user.displayName || user.email?.split('@')[0] || 'User';
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative z-50" ref={dropdownRef}>
       {/* Profile Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
@@ -90,7 +90,7 @@ export default function UserProfileDropdown({ variant = 'light' }) {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-56 rounded-lg bg-white shadow-xl border border-gray-200 overflow-hidden animate-slideUp">
+        <div className="absolute right-0 top-full z-[100] mt-2 w-56 rounded-lg bg-white shadow-xl border border-gray-200 overflow-hidden animate-slideUp">
           {/* User Info Header */}
           <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
             <div className="flex items-center gap-3">

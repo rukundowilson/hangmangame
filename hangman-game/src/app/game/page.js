@@ -425,7 +425,7 @@ export default function GamePage() {
       </div>
 
       {/* Header */}
-      <div className="bg-white relative z-10">
+      <div className="bg-white relative z-20">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <button
             onClick={() => router.push('/')}
@@ -448,11 +448,11 @@ export default function GamePage() {
       </div>
 
       <main className="mx-auto max-w-6xl px-6 py-8 relative z-10">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           {/* Left Side - Hangman Visual & Word */}
           <div className="space-y-6">
             {/* Hangman Drawing with Status */}
-            <div className="rounded-xl bg-white/80 p-8">
+            <div className="rounded-xl bg-white/80 p-8 relative z-10">
               <HangmanDrawing 
                 wrongGuesses={wrongGuesses} 
                 maxWrong={DIFFICULTY[selectedWordBankType === 'custom' ? 'medium' : difficulty].maxWrong}
@@ -486,7 +486,7 @@ export default function GamePage() {
             </div>
 
             {/* Word Display */}
-            <div className="rounded-xl bg-white/80 p-8">
+            <div className="rounded-xl bg-white/80 p-8 relative z-10">
               <div className="text-center">
                 {/* Category Hint */}
                 {wordCategory && (
@@ -525,7 +525,7 @@ export default function GamePage() {
 
           {/* Right Side - Letter Keyboard */}
           <div className="space-y-6">
-            <div className="rounded-xl bg-white/80 p-6">
+            <div className="rounded-xl bg-white/80 p-6 relative z-10">
               <h3 className="mb-4 text-center text-lg font-semibold text-gray-800">
                 Select a Letter
               </h3>
@@ -567,7 +567,7 @@ export default function GamePage() {
             </div>
 
             {/* Game Controls */}
-            <div className="rounded-xl bg-white/80 p-6">
+            <div className="rounded-xl bg-white/80 p-6 relative z-10">
               <div className="space-y-4">
                 {/* Difficulty Selector - Only show for default word banks */}
                 {selectedWordBankType === 'default' && (
